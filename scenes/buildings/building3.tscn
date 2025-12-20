@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bug4b2cn26onv"]
+
+[ext_resource type="Script" uid="uid://bt10dhjes3b32" path="res://scripts/lose_area.gd" id="1_42eql"]
+[ext_resource type="Texture2D" uid="uid://bani7eo45hw8b" path="res://images/Building3.png" id="2_42eql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2hdd"]
+size = Vector2(570.5, 490)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehe0i"]
+size = Vector2(103.90625, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txarc"]
+size = Vector2(594, 32)
+
+[node name="Building3" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="BuildingCollision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1.75, 25)
+shape = SubResource("RectangleShape2D_m2hdd")
+
+[node name="ChimneyCollision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.046875, -213.5)
+shape = SubResource("RectangleShape2D_ehe0i")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_42eql")
+
+[node name="LoseCollider" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+position = Vector2(2, -160)
+shape = SubResource("RectangleShape2D_txarc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2.9802322e-08)
+scale = Vector2(3, 3)
+texture = ExtResource("2_42eql")

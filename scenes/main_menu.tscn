@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsa85fsne282i"]
+
+[ext_resource type="Texture2D" uid="uid://b2k3eufh07hyh" path="res://images/Icons-0multiplier.png" id="1_l6cm7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekxnf"]
+atlas = ExtResource("1_l6cm7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqqt6"]
+atlas = ExtResource("1_l6cm7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu84c"]
+atlas = ExtResource("1_l6cm7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ln24"]
+atlas = ExtResource("1_l6cm7")
+region = Rect2(32, 32, 32, 32)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 637.0
+offset_right = 1131.0
+offset_bottom = 669.0
+scale = Vector2(4, 4)
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_ekxnf")
+stretch_mode = 4
+
+[node name="TextureButton2" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_bqqt6")
+
+[node name="TextureButton3" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_wu84c")
+texture_pressed = SubResource("AtlasTexture_8ln24")

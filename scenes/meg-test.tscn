@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://chx0vard6ig40"]
+
+[ext_resource type="Script" uid="uid://c6wyxpo0b0gdl" path="res://scenes/meg-test.gd" id="1_dqca8"]
+[ext_resource type="FontFile" uid="uid://di0hmduvbgxi1" path="res://fonts/retro-pixel-thick.ttf.woff2" id="2_ejlef"]
+[ext_resource type="PackedScene" uid="uid://d2bf2belt7sru" path="res://scenes/player.tscn" id="2_yxlw8"]
+[ext_resource type="PackedScene" uid="uid://dxstcu7uryheb" path="res://scenes/ball.tscn" id="3_ejlef"]
+[ext_resource type="PackedScene" uid="uid://h4n30v6wms41" path="res://scenes/ground1.tscn" id="4_b35eb"]
+[ext_resource type="PackedScene" uid="uid://jkmat3ogk63s" path="res://scenes/camera.tscn" id="5_orqve"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iywne"]
+font_size = 101
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_dqca8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(40.230293, 22.74428)
+color = Color(0.14276364, 0.16336462, 0.338651, 1)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 592.0
+offset_top = 119.0
+offset_right = 992.0
+offset_bottom = 254.0
+theme_override_fonts/font = ExtResource("2_ejlef")
+theme_override_font_sizes/font_size = 52
+text = "Run with arrows
+[A]/[D] or [<]/[>]"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1078.0
+offset_top = 240.0
+offset_right = 1478.0
+offset_bottom = 444.0
+theme_override_fonts/font = ExtResource("2_ejlef")
+theme_override_font_sizes/font_size = 52
+text = "Kick the gift
+[Enter]
+Don't let it fall!"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 99.0
+offset_top = 235.0
+offset_right = 499.0
+offset_bottom = 439.0
+theme_override_fonts/font = ExtResource("2_ejlef")
+theme_override_font_sizes/font_size = 52
+text = "Jump
+[Spacebar]
+Don't fall!"
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("2_yxlw8")]
+position = Vector2(800, 484.995)
+scale = Vector2(4.205, 4.205)
+speed = 300.0
+kick_deviation = 150.0
+
+[node name="Ball" parent="." instance=ExtResource("3_ejlef")]
+z_index = 1
+position = Vector2(800, 196)
+gravity_scale = 0.0
+
+[node name="Ground" parent="." instance=ExtResource("4_b35eb")]
+position = Vector2(800, 960)
+
+[node name="Ground2" parent="." instance=ExtResource("4_b35eb")]
+position = Vector2(1200, 960)
+
+[node name="Ground3" parent="." instance=ExtResource("4_b35eb")]
+position = Vector2(1600, 960)
+
+[node name="Ground4" parent="." instance=ExtResource("4_b35eb")]
+position = Vector2(400, 960)
+
+[node name="Camera" parent="." instance=ExtResource("5_orqve")]
+z_index = -1
+
+[node name="GameOver" type="Label" parent="Camera"]
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 395.0
+offset_bottom = 149.0
+text = "Dummy"
+label_settings = SubResource("LabelSettings_iywne")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://h4n30v6wms41"]
+
+[ext_resource type="Script" uid="uid://bt10dhjes3b32" path="res://scripts/lose_area.gd" id="1_txarc"]
+[ext_resource type="Texture2D" uid="uid://chtwb3dvni8pn" path="res://images/default.png" id="2_66sk3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi8v4"]
+size = Vector2(400, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txarc"]
+size = Vector2(400, 800)
+
+[node name="Ground" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_mi8v4")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_txarc")
+
+[node name="LoseCollider" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_txarc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2.9802322e-08)
+scale = Vector2(1.563, 3.125)
+texture = ExtResource("2_66sk3")

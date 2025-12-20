@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsa85fsne282i"]
+[gd_scene load_steps=7 format=3 uid="uid://dsa85fsne282i"]
 
+[ext_resource type="Texture2D" uid="uid://e5udhuyqd5k" path="res://images/Title Screen.png" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://b2k3eufh07hyh" path="res://images/Icons-0multiplier.png" id="1_l6cm7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ekxnf"]
@@ -26,13 +27,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+scale = Vector2(5, 5)
+texture = ExtResource("1_ekxnf")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 1027.0
-offset_top = 637.0
-offset_right = 1131.0
-offset_bottom = 669.0
-scale = Vector2(4, 4)
+offset_left = 988.0
+offset_top = 569.0
+offset_right = 1092.0
+offset_bottom = 601.0
+scale = Vector2(5, 5)
 
 [node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2

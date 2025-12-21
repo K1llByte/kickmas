@@ -2,22 +2,10 @@
 
 [ext_resource type="FontFile" uid="uid://di0hmduvbgxi1" path="res://fonts/retro-pixel-thick.ttf.woff2" id="1_p2lnj"]
 
-[node name="Scoreline" type="HBoxContainer"]
-
-[node name="PositionLabel" type="Label" parent="."]
-layout_mode = 2
+[node name="Scoreline" type="Label"]
+offset_right = 128.0
+offset_bottom = 40.0
 theme_override_fonts/font = ExtResource("1_p2lnj")
-theme_override_font_sizes/font_size = 52
-text = "#1 "
-
-[node name="NameLabel" type="Label" parent="."]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_p2lnj")
-theme_override_font_sizes/font_size = 52
-text = "Username "
-
-[node name="ScoreLabel" type="Label" parent="."]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_p2lnj")
-theme_override_font_sizes/font_size = 52
-text = "12345"
+theme_override_font_sizes/font_size = 32
+text = "Username"
+vertical_alignment = 1

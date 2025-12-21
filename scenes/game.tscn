@@ -22,6 +22,7 @@ shadow_offset = Vector2(0, 0)
 script = ExtResource("1_iywne")
 
 [node name="CloudParallax" type="Parallax2D" parent="."]
+z_index = -1
 scroll_scale = Vector2(0.3, 1)
 scroll_offset = Vector2(0, 1)
 repeat_size = Vector2(2560, 0)
@@ -32,6 +33,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_gee14")
 
 [node name="StarParallax" type="Parallax2D" parent="."]
+z_index = -1
 scroll_scale = Vector2(0.2, 1)
 repeat_size = Vector2(2560, 0)
 
@@ -41,7 +43,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("3_0tnpc")
 
 [node name="Player" parent="." instance=ExtResource("1_lnu2h")]
-position = Vector2(800, 484.995)
+position = Vector2(860, 485)
 scale = Vector2(4.205, 4.205)
 speed = 300.0
 kick_deviation = 150.0
@@ -54,6 +56,7 @@ position = Vector2(801, 195)
 z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Camera"]
+z_index = -10
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(40.230293, 22.74428)
@@ -72,3 +75,53 @@ position = Vector2(827, 560)
 
 [node name="Building2" parent="." instance=ExtResource("7_u5sy4")]
 position = Vector2(1823, 281)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="Control"]
+z_index = -1
+layout_mode = 0
+offset_left = 592.0
+offset_top = 119.0
+offset_right = 992.0
+offset_bottom = 254.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.49411765)
+theme_override_fonts/font = ExtResource("5_p57ef")
+theme_override_font_sizes/font_size = 48
+text = "Run with arrows
+[A]/[D] or [<]/[>]"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control"]
+z_index = -1
+layout_mode = 0
+offset_left = 992.0
+offset_top = 245.0
+offset_right = 1392.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.49411765)
+theme_override_fonts/font = ExtResource("5_p57ef")
+theme_override_font_sizes/font_size = 48
+text = "Kick the gift
+[Enter]
+Don't let it fall!"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Control"]
+z_index = -1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 230.0
+offset_right = 558.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.49411765)
+theme_override_fonts/font = ExtResource("5_p57ef")
+theme_override_font_sizes/font_size = 48
+text = "Jump
+[Spacebar] or [W]
+Don't fall!"
+horizontal_alignment = 1

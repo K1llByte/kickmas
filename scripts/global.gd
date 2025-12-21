@@ -1,7 +1,9 @@
 extends Node
 
+const DEFAULT_SCROLL_SPEED_MULT := 1.2
 var player_raw_score := 0.0
-var scrolling_speed_multiplier := 1.2
+var player_high_score := 0
+var scrolling_speed_multiplier := DEFAULT_SCROLL_SPEED_MULT
 var is_playing = false
 signal on_game_over
 
@@ -15,9 +17,11 @@ func game_over():
 		print("Game Over")
 		is_playing = false
 		on_game_over.emit()
+		player_high_score = player_score()
 
 func play():
 	self.player_raw_score = 0.0
+	self.scrolling_speed_multiplier = DEFAULT_SCROLL_SPEED_MULT
 	is_playing = true
 
 func _ready():

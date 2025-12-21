@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6qht8bs0s4vr"]
+[gd_scene load_steps=8 format=3 uid="uid://c6qht8bs0s4vr"]
 
 [ext_resource type="Texture2D" uid="uid://cg5drx1mwr7an" path="res://images/Xmas UI.png" id="1_cvnvp"]
 [ext_resource type="FontFile" uid="uid://di0hmduvbgxi1" path="res://fonts/retro-pixel-thick.ttf.woff2" id="2_d1g1p"]
+[ext_resource type="Shader" uid="uid://cx1eux1l12ngs" path="res://shaders/wavy_font.gdshader" id="3_48pdo"]
 [ext_resource type="Texture2D" uid="uid://cvqnc0msvnmjx" path="res://images/Icons-xmas-theme.png" id="3_d1g1p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knds1"]
+shader = ExtResource("3_48pdo")
+shader_parameter/wave_strength = 2.0
+shader_parameter/wave_speed = 1.7
+shader_parameter/wave_frequency = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_48pdo"]
 atlas = ExtResource("3_d1g1p")
@@ -59,11 +66,13 @@ text = "Game Over"
 horizontal_alignment = 1
 
 [node name="NewHighscore" type="Label" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_knds1")
 layout_mode = 0
 offset_left = 320.0
-offset_top = 313.0
+offset_top = 274.0
 offset_right = 762.0
-offset_bottom = 379.0
+offset_bottom = 340.0
 theme_override_colors/font_color = Color(0.44826126, 0.18847305, 0.26433963, 1)
 theme_override_fonts/font = ExtResource("2_d1g1p")
 theme_override_font_sizes/font_size = 48
@@ -73,12 +82,12 @@ horizontal_alignment = 1
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 320.0
-offset_top = 370.0
+offset_top = 309.0
 offset_right = 762.0
-offset_bottom = 521.0
+offset_bottom = 509.0
 theme_override_colors/font_color = Color(0.44826126, 0.18847305, 0.26433963, 1)
 theme_override_fonts/font = ExtResource("2_d1g1p")
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 160
 text = "123"
 horizontal_alignment = 1
 vertical_alignment = 1

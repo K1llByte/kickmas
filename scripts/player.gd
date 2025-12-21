@@ -122,10 +122,11 @@ func _kick_ball():
 	if ball_pos.x < kick_area_center.x:
 		horizontal_dir = -1
 	else:
-		horizontal_dir = 1
+		# Shootiing backwards is has less deviation
+		horizontal_dir = 0.2
 
 	ball_in_range.linear_velocity = Vector2.ZERO
-	ball_in_range.apply_impulse(Vector2(horizontal_dir * (kick_deviation + 0.5* kick_deviation * Global.scrolling_speed_multiplier), -kick_force))
+	ball_in_range.apply_impulse(Vector2(horizontal_dir * (kick_deviation + 0.5 * kick_deviation * Global.scrolling_speed_multiplier), -kick_force))
 
 func _on_kick_finished():
 	is_kicking = false

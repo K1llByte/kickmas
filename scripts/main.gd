@@ -8,9 +8,9 @@ func _ready():
 	$MainMenu/HBoxContainer/PlayButton.pressed.connect(_on_play)
 	Global.on_game_over.connect(_on_game_over)
 
-func _process(delta):
-	if not Global.is_playing and Input.is_action_pressed("menu_start"):
-			_on_play()
+#func _process(delta):
+	#if not Global.is_playing and Input.is_action_pressed("menu_start"):
+			#_on_play()
 
 func _on_play():
 	var game_root = get_node("Root")
@@ -30,6 +30,8 @@ func _on_game_over():
 	gameover.get_node("HomeButton").pressed.connect(_on_home)
 	gameover.get_node("RetryButton").pressed.connect(_on_retry)
 	gameover.get_node("ScoreLabel").text = str(Global.player_score())
+	if Global.player_high_score < Global.player_score():
+		gameover.get_node("NewHighscore").show()
 	$CanvasLayer.add_child(gameover)
 
 func _on_retry():

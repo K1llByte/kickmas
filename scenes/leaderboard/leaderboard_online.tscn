@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj4w4ufgjnqa5"]
+[gd_scene load_steps=8 format=3 uid="uid://dj4w4ufgjnqa5"]
 
 [ext_resource type="Script" uid="uid://cij4l3sf32x3x" path="res://scripts/leaderboard.gd" id="1_riupn"]
 [ext_resource type="Texture2D" uid="uid://cg5drx1mwr7an" path="res://images/Xmas UI.png" id="2_cosnx"]
 [ext_resource type="FontFile" uid="uid://di0hmduvbgxi1" path="res://fonts/retro-pixel-thick.ttf.woff2" id="2_riupn"]
+[ext_resource type="PackedScene" uid="uid://b3o73s8ouep8y" path="res://scenes/leaderboard/scoreline.tscn" id="3_4pqye"]
 [ext_resource type="Texture2D" uid="uid://b2k3eufh07hyh" path="res://images/Icons-0multiplier.png" id="4_cosnx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_riupn"]
@@ -37,13 +38,43 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 997.0
+offset_left = 986.0
 offset_top = 116.0
-offset_right = 1287.3508
-offset_bottom = 166.0
+offset_right = 1306.0
+offset_bottom = 696.0
 theme_override_constants/separation = 20
-alignment = 1
+
+[node name="Scoreline" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+
+[node name="Scoreline2" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+
+[node name="Scoreline3" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+
+[node name="Scoreline4" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+
+[node name="Scoreline5" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+
+[node name="Scoreline6" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+
+[node name="Scoreline7" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+
+[node name="Scoreline8" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+
+[node name="Scoreline9" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+
+[node name="Scoreline10" parent="VBoxContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
 
 [node name="LoadingLabel" type="Label" parent="."]
 layout_mode = 0
@@ -73,3 +104,26 @@ offset_right = 1316.0
 offset_bottom = 757.0
 texture_normal = SubResource("AtlasTexture_4pqye")
 stretch_mode = 4
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 974.0
+offset_top = 116.0
+offset_right = 1318.0
+offset_bottom = 161.0
+columns = 3
+
+[node name="Scoreline" parent="GridContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+text = "#1  "
+horizontal_alignment = 1
+
+[node name="Scoreline2" parent="GridContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+text = "----------------  "
+horizontal_alignment = 1
+
+[node name="Scoreline3" parent="GridContainer" instance=ExtResource("3_4pqye")]
+layout_mode = 2
+text = "111"
+horizontal_alignment = 2

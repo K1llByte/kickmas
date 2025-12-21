@@ -4,7 +4,7 @@ func is_falling() -> bool:
 	return self.linear_velocity.y > 0
 
 func _ready():
-	self.apply_impulse(Vector2(0,-400.0))
+	self.apply_impulse(Vector2(-60,-400.0))
 
 #@export var gravity := 200.0
 #@export var max_fall_speed := 300.0

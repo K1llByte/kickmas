@@ -23,6 +23,15 @@ func play():
 func _ready():
 	game_over()
 	play()
+	_init_leaderboard()
 
 func player_score() -> int:
 	return int(player_raw_score * 2.0)
+
+func _init_leaderboard():
+	SilentWolf.configure({
+		"api_key": "fyvestFMjaTsiYdJhRWv3rjfKbcKZLD2adiSFZXb",
+		"game_id": "SpaceJamProject",
+		"game_version": "1.0",
+		"log_level": 1
+	})

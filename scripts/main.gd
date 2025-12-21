@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var game_scene = preload("res://scenes/game.tscn")
-@onready var leaderboard_scene = preload("res://scenes/leaderboard.tscn")
+@onready var leaderboard_scene = preload("res://scenes/leaderboard/leaderboard_online.tscn")
 
 func _ready():
 	$MainMenu/HBoxContainer/PlayButton.pressed.connect(_on_play)

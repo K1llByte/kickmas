@@ -6,25 +6,5 @@ func is_falling() -> bool:
 func _ready():
 	self.apply_impulse(Vector2(-60,-400.0))
 
-#@export var gravity := 200.0
-#@export var max_fall_speed := 300.0
-	
-#func _physics_process(delta):
-	#velocity.y += gravity * delta
-	#velocity.y = min(velocity.y, max_fall_speed)
-#
-	#move_and_slide()
-
-	#_clamp_to_viewport()
-
-
-
-#func _clamp_to_viewport():
-	#var viewport_rect = get_viewport_rect()
-	#var radius = $CollisionShape2D.shape.extents.x
-#
-	#position.y = clamp(
-		#position.y,
-		#radius,
-		#viewport_rect.size.y - radius
-	#)
+func set_outline_color(color: Color):
+	$AnimatedSprite2D.material.set_shader_parameter("outline_color", color)

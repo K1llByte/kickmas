@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed := 400.0
+@export var fall_speed := 100.0
 @export var kick_force := 500.0
 @export var kick_deviation := 100.0
 @export var gravity := 2400.0
@@ -65,6 +66,13 @@ func _physics_process(delta):
 			$AnimatedSprite2D.animation_finished.connect(_on_kick_finished)
 			if ball_in_range and ball_in_range.is_falling():
 				_kick_ball()
+				
+		##############################################
+		# Fall
+		##############################################
+		if Input.is_action_just_pressed("plr_fall") and not self.is_on_floor():
+			print("Falling")
+			velocity.y += fall_speed * 5.0
 
 		##############################################
 		# Jump
@@ -75,7 +83,7 @@ func _physics_process(delta):
 			is_jumping = true
 	else:
 		if self.is_on_floor() and not fall_anim_played:
-			$AnimatedSprite2D.play("fall")
+			$AnimatedSprite2D.play("lose")
 			fall_anim_played = true
 			$AnimatedSprite2D.transform.origin.y += 4.0
 	
@@ -87,7 +95,7 @@ func _physics_process(delta):
 	#_clamp_to_viewport()
 
 func fall():
-	$AnimatedSprite2D.play("fall")
+	$AnimatedSprite2D.play("lose")
 
 func _move():
 	var direction := 0

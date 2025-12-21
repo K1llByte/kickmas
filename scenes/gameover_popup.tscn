@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knds1"]
 shader = ExtResource("3_48pdo")
 shader_parameter/wave_strength = 2.0
-shader_parameter/wave_speed = 1.7
+shader_parameter/wave_speed = 6.0
 shader_parameter/wave_frequency = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_48pdo"]

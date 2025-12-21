@@ -19,6 +19,7 @@ func _process(delta: float):
 	_update_score_label()
 	_update_ground_spawner()
 	_cleanup_old_ground()
+	_update_ball_outline()
 
 func _ready():
 	#camera = get_viewport().get_camera_2d()
@@ -67,3 +68,12 @@ func _cleanup_old_ground():
 
 func _update_score_label():
 	$Camera/ScoreLabel.text = str(Global.player_score())
+
+func _update_ball_outline():
+	# Change ball color acording to distance to player
+	if $Player.ball_in_range != null:
+		$Ball.set_outline_color(Color(0.42, 0.611, 0.0, 0.761))
+	#elif $Player.global_position.distance_to($Ball.global_position) < 200.0:
+		#$Ball.set_outline_color(Color(1.0, 0.019, 0.251, 0.761))
+	else:
+		$Ball.set_outline_color(Color(0.0, 0.0, 0.0, 0.0))

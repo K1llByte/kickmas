@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://nvly4wvgiqdl"]
+
+[ext_resource type="Texture2D" uid="uid://cg5drx1mwr7an" path="res://images/Xmas UI.png" id="1_cvnvp"]
+[ext_resource type="FontFile" uid="uid://di0hmduvbgxi1" path="res://fonts/retro-pixel-thick.ttf.woff2" id="2_d1g1p"]
+[ext_resource type="Texture2D" uid="uid://cvqnc0msvnmjx" path="res://images/Icons-xmas-theme.png" id="3_d1g1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48pdo"]
+atlas = ExtResource("3_d1g1p")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knds1"]
+atlas = ExtResource("3_d1g1p")
+region = Rect2(64, 0, 32, 32)
+
+[node name="GameoverPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PopupBG" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 196.99998
+offset_top = 65.99999
+offset_right = 326.19998
+offset_bottom = 219.19998
+scale = Vector2(5, 5)
+texture = ExtResource("1_cvnvp")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="GameoverOutline" type="Label" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 144.0
+offset_right = 743.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(0.68235296, 0.13725491, 0.20392157, 1)
+theme_override_colors/font_outline_color = Color(0.44705883, 0.1882353, 0.2627451, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("2_d1g1p")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="GameoverLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 144.0
+offset_right = 743.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(0.68235296, 0.13725491, 0.20392157, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_d1g1p")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="NewHighscore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 313.0
+offset_right = 742.0
+offset_bottom = 379.0
+theme_override_colors/font_color = Color(0.44826126, 0.18847305, 0.26433963, 1)
+theme_override_fonts/font = ExtResource("2_d1g1p")
+theme_override_font_sizes/font_size = 48
+text = "New highscore!"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 370.0
+offset_right = 742.0
+offset_bottom = 521.0
+theme_override_colors/font_color = Color(0.44826126, 0.18847305, 0.26433963, 1)
+theme_override_fonts/font = ExtResource("2_d1g1p")
+theme_override_font_sizes/font_size = 120
+text = "123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 565.0
+offset_right = 370.0
+offset_bottom = 605.0
+scale = Vector2(4, 4)
+texture_normal = SubResource("AtlasTexture_48pdo")
+stretch_mode = 4
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 548.0
+offset_top = 565.0
+offset_right = 588.0
+offset_bottom = 605.0
+scale = Vector2(4, 4)
+texture_normal = SubResource("AtlasTexture_knds1")
+stretch_mode = 4

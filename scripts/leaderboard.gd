@@ -4,7 +4,8 @@ var scoreline_scene = preload("res://scenes/leaderboard/scoreline.tscn")
 var has_submitted := false
 
 func _ready():
-	#_reset_leaderboard()
+	#_reset_leaderboard()aw
+	
 	$PlayButton.pressed.connect(_submit_score)
 	
 	# Clear dummy data from editor
@@ -66,7 +67,6 @@ func _submit_score():
 
 
 func _finish_submit_score(sw_result):
-	
 	print("_finish_submit_score")
 	SilentWolf.Scores.sw_save_score_complete.disconnect(_finish_submit_score)
 	populate_leaderboard()

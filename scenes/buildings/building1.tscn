@@ -15,6 +15,7 @@ size = Vector2(1225, 42)
 [node name="Building1" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 191)
 collision_mask = 3
 
 [node name="TriangleCollision" type="CollisionPolygon2D" parent="StaticBody2D"]
@@ -37,7 +38,7 @@ script = ExtResource("1_52d5n")
 position = Vector2(-0.5, -98)
 shape = SubResource("RectangleShape2D_txarc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 2.9802322e-08)
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["building"]]
+position = Vector2(0, 191)
 scale = Vector2(3, 3)
 texture = ExtResource("2_7gfh7")

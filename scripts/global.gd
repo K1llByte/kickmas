@@ -1,8 +1,9 @@
 extends Node
 
 var player_raw_score := 0.0
-var scrolling_speed_multiplier := 2.0
-var is_playing = true
+var scrolling_speed_multiplier := 1.2
+var is_playing = false
+signal on_game_over
 
 func _process(delta):
 	if is_playing:
@@ -13,6 +14,7 @@ func game_over():
 	if is_playing:
 		print("Game Over")
 		is_playing = false
+		on_game_over.emit()
 
 func play():
 	self.player_raw_score = 0.0

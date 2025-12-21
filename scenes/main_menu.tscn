@@ -42,16 +42,16 @@ offset_right = 1092.0
 offset_bottom = 601.0
 scale = Vector2(5, 5)
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_ekxnf")
 stretch_mode = 4
 
-[node name="TextureButton2" type="TextureButton" parent="HBoxContainer"]
+[node name="LeaderboardButton2" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_bqqt6")
 
-[node name="TextureButton3" type="TextureButton" parent="HBoxContainer"]
+[node name="MuteButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 toggle_mode = true
 texture_normal = SubResource("AtlasTexture_wu84c")

@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2bf2belt7sru"]
+[gd_scene load_steps=25 format=3 uid="uid://d2bf2belt7sru"]
 
 [ext_resource type="Script" uid="uid://bj67ke0a5dqls" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://bteaye28vajk8" path="res://images/icon.svg" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://mny5l8e41cga" path="res://images/Idle-0multiplier.png" id="3_dqkch"]
+[ext_resource type="Texture2D" uid="uid://py7qvtxhyacb" path="res://images/Falling-0multiplier.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bh4f0ablqek8g" path="res://images/Running-0multiplier.png" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://d2imasi20ygd3" path="res://images/Kicking-0multiplier.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://bo4iib1bg1v6d" path="res://images/Jumping-0multiplier.png" id="6_tuyoq"]
@@ -20,6 +20,18 @@ region = Rect2(128, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
 atlas = ExtResource("6_tuyoq")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
+atlas = ExtResource("4_fjrip")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("4_fjrip")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("4_fjrip")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("3_dqkch")
@@ -72,6 +84,20 @@ animations = [{
 }],
 "loop": false,
 "name": &"end_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}],
+"loop": false,
+"name": &"fall",
 "speed": 5.0
 }, {
 "frames": [{
@@ -129,12 +155,7 @@ animations = [{
 script = ExtResource("1_g2els")
 speed = 20.0
 kick_deviation = 200.0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-0.4999981, -1.9073486e-06)
-scale = Vector2(0.17968749, 0.328125)
-texture = ExtResource("2_qhqgy")
+kick_cooldown = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -152,4 +173,8 @@ shape = SubResource("RectangleShape2D_qhqgy")
 position = Vector2(0, -4)
 scale = Vector2(0.66, 0.66)
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"end_jump"
+animation = &"fall"
+frame = 2
+frame_progress = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

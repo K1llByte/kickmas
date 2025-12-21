@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://co8n5jp8sw3nq"]
+
+[ext_resource type="Script" uid="uid://bchx672pdyuto" path="res://scripts/game.gd" id="1_iywne"]
+[ext_resource type="PackedScene" uid="uid://d2bf2belt7sru" path="res://scenes/player.tscn" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dxstcu7uryheb" path="res://scenes/ball.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://jkmat3ogk63s" path="res://scenes/camera.tscn" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://h4n30v6wms41" path="res://scenes/ground1.tscn" id="4_lbhrr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iywne"]
+font_size = 101
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_iywne")
+
+[node name="Player" parent="." instance=ExtResource("1_lnu2h")]
+position = Vector2(800, 484.995)
+scale = Vector2(4.205, 4.205)
+speed = 300.0
+kick_deviation = 150.0
+
+[node name="Ball" parent="." instance=ExtResource("3_iywne")]
+z_index = 1
+position = Vector2(800, 196)
+gravity_scale = 0.0
+
+[node name="Ground" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(800, 960)
+
+[node name="Ground2" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(1200, 960)
+
+[node name="Ground3" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(1600, 960)
+
+[node name="Ground4" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(400, 960)
+
+[node name="Camera" parent="." instance=ExtResource("4_iywne")]
+z_index = -1
+
+[node name="ScoreLabel" type="Label" parent="Camera"]
+offset_left = 33.0
+offset_top = 11.0
+offset_right = 419.0
+offset_bottom = 149.0
+text = "0"
+label_settings = SubResource("LabelSettings_iywne")

@@ -3,17 +3,24 @@ extends CharacterBody2D
 @export var speed := 400.0
 @export var kick_force := 500.0
 @export var kick_deviation := 100.0
-@export var gravity := 1600.0
+@export var gravity := 2400.0
 @export var max_fall_speed := 800.0
-@export var jump_velocity := -800.0
-var is_kicking = false
-var is_jumping = false
+@export var jump_velocity := -1000.0
+@export var kick_cooldown := 0.1 # seconds
+
+var is_kicking := false
+var is_jumping := false
+var kick_cooldown_timer := 0.0
+var fall_anim_played = false
 
 var ball_in_range: Node = null
 
 func _ready():
 	$KickArea.body_entered.connect(_on_ball_entered)
 	$KickArea.body_exited.connect(_on_ball_exited)
+
+func _process(delta: float):
+	kick_cooldown_timer += delta
 
 func _physics_process(delta):
 	# Only apply gravity to player if he is not on the ground
@@ -48,26 +55,39 @@ func _physics_process(delta):
 			elif direction == -1 and self.is_on_floor():
 				$AnimatedSprite2D.play("running")
 
-		# Ball kicking
-		if Input.is_action_just_pressed("plr_kick"):
+		##############################################
+		# Kick
+		##############################################
+		if Input.is_action_just_pressed("plr_kick") and kick_cooldown_timer > kick_cooldown:
+			kick_cooldown_timer = 0.0
 			is_kicking = true
 			$AnimatedSprite2D.play("kick")
 			$AnimatedSprite2D.animation_finished.connect(_on_kick_finished)
 			if ball_in_range and ball_in_range.is_falling():
 				_kick_ball()
 
-		# Player jumping
+		##############################################
+		# Jump
+		##############################################
 		if self.is_on_floor() and Input.is_action_just_pressed("plr_jump"):
 			velocity.y = jump_velocity
 			$AnimatedSprite2D.play("start_jump")
 			is_jumping = true
-		
+	else:
+		if self.is_on_floor() and not fall_anim_played:
+			$AnimatedSprite2D.play("fall")
+			fall_anim_played = true
+			$AnimatedSprite2D.transform.origin.y += 4.0
+	
 	# Update player movement
-	self.velocity.x = direction * (speed + (Global.scrolling_speed_multiplier - 1.0) * speed)
+	self.velocity.x = direction * (speed + (Global.scrolling_speed_multiplier - 1.0) * speed * 0.5)
 	# Update physics move
 	move_and_slide()
 	
 	#_clamp_to_viewport()
+
+func fall():
+	$AnimatedSprite2D.play("fall")
 
 func _move():
 	var direction := 0
@@ -105,7 +125,7 @@ func _kick_ball():
 		horizontal_dir = 1
 
 	ball_in_range.linear_velocity = Vector2.ZERO
-	ball_in_range.apply_impulse(Vector2(horizontal_dir * kick_deviation, -kick_force))
+	ball_in_range.apply_impulse(Vector2(horizontal_dir * (kick_deviation + 0.5* kick_deviation * Global.scrolling_speed_multiplier), -kick_force))
 
 func _on_kick_finished():
 	is_kicking = false

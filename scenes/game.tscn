@@ -1,16 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://co8n5jp8sw3nq"]
+[gd_scene load_steps=11 format=3 uid="uid://bcfpc82721ceu"]
 
-[ext_resource type="Script" uid="uid://bchx672pdyuto" path="res://scenes/game.gd" id="1_iywne"]
+[ext_resource type="Script" uid="uid://bchx672pdyuto" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://d2bf2belt7sru" path="res://scenes/player.tscn" id="1_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://b1rvetdha2yi" path="res://images/Parallax Cloud.png" id="2_gee14"]
+[ext_resource type="Texture2D" uid="uid://cn8fs7bgoylsd" path="res://images/Parallax Stars.png" id="3_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dxstcu7uryheb" path="res://scenes/ball.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://jkmat3ogk63s" path="res://scenes/camera.tscn" id="4_iywne"]
-[ext_resource type="PackedScene" uid="uid://h4n30v6wms41" path="res://scenes/ground1.tscn" id="4_lbhrr"]
+[ext_resource type="FontFile" uid="uid://di0hmduvbgxi1" path="res://fonts/retro-pixel-thick.ttf.woff2" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://da3xdx0yrjh28" path="res://scenes/buildings/building1.tscn" id="6_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://by7p70ohxiqu8" path="res://scenes/buildings/building2.tscn" id="7_u5sy4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iywne"]
+font = ExtResource("5_p57ef")
 font_size = 101
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 25
+shadow_color = Color(0.27058825, 0.16078432, 0.24705882, 1)
+shadow_offset = Vector2(0, 0)
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_iywne")
+
+[node name="CloudParallax" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 1)
+scroll_offset = Vector2(0, 1)
+repeat_size = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CloudParallax"]
+position = Vector2(759.0001, 549)
+scale = Vector2(4, 4)
+texture = ExtResource("2_gee14")
+
+[node name="StarParallax" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 1)
+repeat_size = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="StarParallax"]
+position = Vector2(744, 365)
+scale = Vector2(4, 4)
+texture = ExtResource("3_0tnpc")
 
 [node name="Player" parent="." instance=ExtResource("1_lnu2h")]
 position = Vector2(800, 484.995)
@@ -20,28 +48,27 @@ kick_deviation = 150.0
 
 [node name="Ball" parent="." instance=ExtResource("3_iywne")]
 z_index = 1
-position = Vector2(800, 196)
-gravity_scale = 0.0
-
-[node name="Ground" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(800, 960)
-
-[node name="Ground2" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(1200, 960)
-
-[node name="Ground3" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(1600, 960)
-
-[node name="Ground4" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(400, 960)
+position = Vector2(801, 195)
 
 [node name="Camera" parent="." instance=ExtResource("4_iywne")]
 z_index = -1
 
-[node name="GameOver" type="Label" parent="Camera"]
-offset_left = 9.0
+[node name="ColorRect" type="ColorRect" parent="Camera"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(40.230293, 22.74428)
+color = Color(0.14276364, 0.16336462, 0.338651, 1)
+
+[node name="ScoreLabel" type="Label" parent="Camera"]
+offset_left = 33.0
 offset_top = 11.0
-offset_right = 395.0
+offset_right = 419.0
 offset_bottom = 149.0
-text = "Dummy"
+text = "0"
 label_settings = SubResource("LabelSettings_iywne")
+
+[node name="Building1" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(827, 560)
+
+[node name="Building2" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(1823, 281)

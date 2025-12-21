@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bteaye28vajk8" path="res://images/icon.svg" id="2_cxlvu"]
 [ext_resource type="Texture2D" uid="uid://bna8s4e0y1w4i" path="res://images/Gift-0multiplier.png" id="3_f7cbr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxlvu"]
-size = Vector2(40, 40)
+[sub_resource type="CircleShape2D" id="CircleShape2D_f7cbr"]
+radius = 31.26
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4dx81"]
 atlas = ExtResource("3_f7cbr")
@@ -56,7 +56,7 @@ scale = Vector2(0.344, 0.344)
 texture = ExtResource("2_cxlvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ball"]]
-shape = SubResource("RectangleShape2D_cxlvu")
+shape = SubResource("CircleShape2D_f7cbr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)

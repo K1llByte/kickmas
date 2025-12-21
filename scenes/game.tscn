@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcfpc82721ceu"]
+[gd_scene load_steps=12 format=3 uid="uid://bcfpc82721ceu"]
 
 [ext_resource type="Script" uid="uid://bchx672pdyuto" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://d2bf2belt7sru" path="res://scenes/player.tscn" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://b1rvetdha2yi" path="res://images/Parallax Cloud.png" id="2_gee14"]
 [ext_resource type="Texture2D" uid="uid://cn8fs7bgoylsd" path="res://images/Parallax Stars.png" id="3_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://dxstcu7uryheb" path="res://scenes/ball.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://jkmat3ogk63s" path="res://scenes/camera.tscn" id="4_iywne"]
 [ext_resource type="FontFile" uid="uid://di0hmduvbgxi1" path="res://fonts/retro-pixel-thick.ttf.woff2" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://da3xdx0yrjh28" path="res://scenes/buildings/building1.tscn" id="6_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://by7p70ohxiqu8" path="res://scenes/buildings/building2.tscn" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://cvn1kfs1r63ra" path="res://scripts/controls_labels.gd" id="9_0tnpc"]
+[ext_resource type="Script" uid="uid://e66epw3ctndb" path="res://scripts/press_to_start_anim.gd" id="10_vtaks"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iywne"]
 font = ExtResource("5_p57ef")
@@ -48,10 +49,6 @@ scale = Vector2(4.205, 4.205)
 speed = 300.0
 kick_deviation = 150.0
 
-[node name="Ball" parent="." instance=ExtResource("3_iywne")]
-z_index = 1
-position = Vector2(801, 195)
-
 [node name="Camera" parent="." instance=ExtResource("4_iywne")]
 z_index = -1
 
@@ -63,10 +60,10 @@ scale = Vector2(40.230293, 22.74428)
 color = Color(0.14276364, 0.16336462, 0.338651, 1)
 
 [node name="ScoreLabel" type="Label" parent="Camera"]
-offset_left = 33.0
-offset_top = 11.0
-offset_right = 419.0
-offset_bottom = 149.0
+offset_left = 45.0
+offset_top = 26.0
+offset_right = 431.0
+offset_bottom = 164.0
 text = "0"
 label_settings = SubResource("LabelSettings_iywne")
 
@@ -81,28 +78,30 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("9_0tnpc")
 
-[node name="Label2" type="Label" parent="Control"]
+[node name="RunLabel" type="Label" parent="Control"]
 z_index = -1
 layout_mode = 0
-offset_left = 592.0
-offset_top = 119.0
-offset_right = 992.0
-offset_bottom = 254.0
+offset_left = 582.0
+offset_top = 82.0
+offset_right = 984.0
+offset_bottom = 268.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.49411765)
 theme_override_fonts/font = ExtResource("5_p57ef")
 theme_override_font_sizes/font_size = 48
-text = "Run with arrows
-[A]/[D] or [<]/[>]"
+text = "Run
+[A]/[D]
+Don't be left behind!"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Control"]
+[node name="KickLabel" type="Label" parent="Control"]
 z_index = -1
 layout_mode = 0
-offset_left = 992.0
-offset_top = 245.0
-offset_right = 1392.0
-offset_bottom = 449.0
+offset_left = 1005.0
+offset_top = 82.0
+offset_right = 1405.0
+offset_bottom = 286.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.49411765)
 theme_override_fonts/font = ExtResource("5_p57ef")
 theme_override_font_sizes/font_size = 48
@@ -111,13 +110,13 @@ text = "Kick the gift
 Don't let it fall!"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="Control"]
+[node name="JumpLabel" type="Label" parent="Control"]
 z_index = -1
 layout_mode = 0
-offset_left = 155.0
-offset_top = 230.0
-offset_right = 558.0
-offset_bottom = 434.0
+offset_left = 151.0
+offset_top = 78.0
+offset_right = 554.0
+offset_bottom = 282.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.49411765)
 theme_override_fonts/font = ExtResource("5_p57ef")
 theme_override_font_sizes/font_size = 48
@@ -125,3 +124,17 @@ text = "Jump
 [Spacebar] or [W]
 Don't fall!"
 horizontal_alignment = 1
+
+[node name="PressToStartLabel" type="Label" parent="Control"]
+z_index = -1
+layout_mode = 0
+offset_left = 566.0
+offset_top = 328.0
+offset_right = 1019.0
+offset_bottom = 532.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.49411765)
+theme_override_fonts/font = ExtResource("5_p57ef")
+theme_override_font_sizes/font_size = 48
+text = "Press any key to start"
+horizontal_alignment = 1
+script = ExtResource("10_vtaks")

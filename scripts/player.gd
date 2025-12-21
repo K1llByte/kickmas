@@ -13,15 +13,18 @@ var is_kicking := false
 var is_jumping := false
 var kick_cooldown_timer := 0.0
 var fall_anim_played = false
-
 var ball_in_range: Node = null
+
 
 func _ready():
 	$KickArea.body_entered.connect(_on_ball_entered)
 	$KickArea.body_exited.connect(_on_ball_exited)
+	Global.on_game_over.connect(_on_game_over)
+
 
 func _process(delta: float):
 	kick_cooldown_timer += delta
+
 
 func _physics_process(delta):
 	# Only apply gravity to player if he is not on the ground
@@ -81,25 +84,24 @@ func _physics_process(delta):
 			velocity.y = jump_velocity
 			$AnimatedSprite2D.play("start_jump")
 			is_jumping = true
-	else:
-		if self.is_on_floor() and not fall_anim_played:
-			$AnimatedSprite2D.play("lose")
-			fall_anim_played = true
-			$AnimatedSprite2D.transform.origin.y += 4.0
+	#else:
+		#if self.is_on_floor() and not fall_anim_played:
+			#$AnimatedSprite2D.play("lose")
+			#fall_anim_played = true
+			#$AnimatedSprite2D.transform.origin.y += 4.0
 	
 	# Update player movement
 	self.velocity.x = direction * (speed + (Global.scrolling_speed_multiplier - 1.0) * speed * 0.5)
 	# Update physics move
 	move_and_slide()
-	
-	#_clamp_to_viewport()
+
 
 func fall():
 	$AnimatedSprite2D.play("lose")
 
+
 func _move():
 	var direction := 0
-	
 	# Player horizontal movement
 	if Input.is_action_pressed("plr_left"):
 		direction -= 1
@@ -120,6 +122,7 @@ func _move():
 	# Update player movement
 	self.velocity.x = direction * speed  * Global.scrolling_speed_multiplier
 
+
 func _kick_ball():
 	assert(ball_in_range, "Ball should be here")
 	# Determine left or right
@@ -136,21 +139,33 @@ func _kick_ball():
 	ball_in_range.linear_velocity = Vector2.ZERO
 	ball_in_range.apply_impulse(Vector2(horizontal_dir * (kick_deviation + 0.5 * kick_deviation * Global.scrolling_speed_multiplier), -kick_force))
 
+
+func _on_game_over():
+	if self.is_on_floor() and not fall_anim_played:
+		$AnimatedSprite2D.play("lose")
+		fall_anim_played = true
+		$AnimatedSprite2D.transform.origin.y += 4.0
+
+
 func _on_kick_finished():
 	is_kicking = false
 	$AnimatedSprite2D.animation_finished.disconnect(_on_kick_finished)
-	
+
+
 func _on_jump_finished():
 	is_jumping = false
 	$AnimatedSprite2D.animation_finished.disconnect(_on_jump_finished)
+
 
 func _on_ball_entered(body: Node):
 	if body.is_in_group("ball"):
 		ball_in_range = body
 
+
 func _on_ball_exited(body: Node):
 	if body.is_in_group("ball"):
 		ball_in_range = null
+
 
 func _clamp_to_viewport():
 	var viewport_rect = get_viewport_rect()

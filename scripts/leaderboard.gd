@@ -4,8 +4,8 @@ var scoreline_scene = preload("res://scenes/leaderboard/scoreline.tscn")
 var has_submitted := false
 
 func _ready():
-	#_reset_leaderboard()aw
-	
+	#_reset_leaderboard()
+
 	$PlayButton.pressed.connect(_submit_score)
 	
 	# Clear dummy data from editor
@@ -57,7 +57,7 @@ func _finish_populate_leaderboard(sw_result):
 
 
 func _submit_score():
-	if $LineEdit.text != "" and not has_submitted:
+	if $LineEdit.text != "" and not has_submitted and _is_valid_name($LineEdit.text):
 		has_submitted = true
 		var score_id = await SilentWolf.Scores.save_score($LineEdit.text, Global.player_score())
 		print("Score saved successfully: " + str(Global.player_score()))
@@ -74,3 +74,9 @@ func _finish_submit_score(sw_result):
 
 func _reset_leaderboard():
 	await SilentWolf.Scores.wipe_leaderboard()
+
+
+# A valid score player name must not have more than 16 characters and must not
+# have whitespaces.
+func _is_valid_name(name: String) -> bool:
+	return name.length() <= 16 and not name.contains(" ")

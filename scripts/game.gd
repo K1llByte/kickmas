@@ -4,7 +4,7 @@ extends Node2D
 @export var ball_outline_color := Color(0.42, 0.611, 0.0, 0.761)
 
 @onready var camera: Camera2D
-@onready var ground1_scene = preload("res://scenes/ground1.tscn")
+@onready var ball_scene = preload("res://scenes/ball.tscn")
 @onready var building1_scene = preload("res://scenes/buildings/building1.tscn")
 @onready var building2_scene = preload("res://scenes/buildings/building2.tscn")
 @onready var building3_scene = preload("res://scenes/buildings/building3.tscn")
@@ -14,6 +14,7 @@ var ground_types := []
 var next_spawn_x := 0.0
 var previous_ground_width := 0.0
 var is_first_spawn := true
+var has_started_game = false
 
 func _process(delta: float):
 	#if not is_instance_valid(camera):
@@ -23,11 +24,19 @@ func _process(delta: float):
 	_cleanup_old_ground()
 	_update_ball_outline()
 
+func _input(event):
+	if not has_started_game and event is InputEventKey and event.pressed:
+		print("pressed any key")
+		Global.is_playing = true
+		has_started_game = true
+		var ball = ball_scene.instantiate()
+		ball.transform.origin = Vector2(800.0, 195.0)
+		add_child(ball)
+
 func _ready():
-	#camera = get_viewport().get_camera_2d()
 	camera = $Camera/Camera2D
 	ground_types = [
-		{ "scene": building1_scene, "width": 1260.0 }, # this building should be the last
+		{ "scene": building1_scene, "width": 1260.0 }, # This building should be the last
 		{ "scene": building2_scene, "width": 924.0 },
 		{ "scene": building3_scene, "width": 807.0 } 
 	]
@@ -72,10 +81,11 @@ func _update_score_label():
 	$Camera/ScoreLabel.text = str(Global.player_score())
 
 func _update_ball_outline():
-	# Change ball color acording to distance to player
-	if $Player.ball_in_range != null:
-		$Ball.set_outline_color(ball_outline_color)
-	#elif $Player.global_position.distance_to($Ball.global_position) < 200.0:
-		#$Ball.set_outline_color(Color(1.0, 0.019, 0.251, 0.761))
-	else:
-		$Ball.set_outline_color(Color(0.0, 0.0, 0.0, 0.0))
+	if $Ball != null:
+		# Change ball color acording to distance to player
+		if $Player.ball_in_range != null:
+			$Ball.set_outline_color(ball_outline_color)
+		#elif $Player.global_position.distance_to($Ball.global_position) < 200.0:
+			#$Ball.set_outline_color(Color(1.0, 0.019, 0.251, 0.761))
+		else:
+			$Ball.set_outline_color(Color(0.0, 0.0, 0.0, 0.0))

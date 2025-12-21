@@ -2,7 +2,7 @@ extends Node2D
 
 @export var spawn_buffer := 800.0 # how far offscreen to spawn
 
-@onready var camera := get_viewport().get_camera_2d()
+@onready var camera: Camera2D
 @onready var ground1_scene = preload("res://scenes/ground1.tscn")
 @onready var building1_scene = preload("res://scenes/buildings/building1.tscn")
 @onready var building2_scene = preload("res://scenes/buildings/building2.tscn")
@@ -14,11 +14,15 @@ var previous_ground_width := 0.0
 var is_first_spawn := true
 
 func _process(delta: float):
+	#if not is_instance_valid(camera):
+		#return
 	_update_score_label()
 	_update_ground_spawner()
 	_cleanup_old_ground()
 
 func _ready():
+	#camera = get_viewport().get_camera_2d()
+	camera = $Camera/Camera2D
 	ground_types = [
 		{ "scene": building1_scene, "width": 1260.0 }, # this building should be the last
 		{ "scene": building2_scene, "width": 924.0 },

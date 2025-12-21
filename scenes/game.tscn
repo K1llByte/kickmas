@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bcfpc82721ceu"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_iywne"]
+[ext_resource type="Script" uid="uid://bchx672pdyuto" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://d2bf2belt7sru" path="res://scenes/player.tscn" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://b1rvetdha2yi" path="res://images/Parallax Cloud.png" id="2_gee14"]
 [ext_resource type="Texture2D" uid="uid://cn8fs7bgoylsd" path="res://images/Parallax Stars.png" id="3_0tnpc"]

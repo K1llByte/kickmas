@@ -3,6 +3,8 @@ extends Control
 var scoreline_scene = preload("res://scenes/leaderboard/scoreline.tscn")
 
 func _ready():
+	$PlayButton.pressed.connect(_submit_score)
+	
 	# Clear dummy data from editor
 	for child in $VBoxContainer.get_children():
 		child.queue_free()
@@ -30,3 +32,13 @@ func _finish_populate_leaderboard(sw_result):
 		$VBoxContainer.add_child(scoreline)
 		idx += 1
 	SilentWolf.Scores.sw_get_scores_complete.disconnect(_finish_populate_leaderboard)
+
+func _submit_score():
+	if $LineEdit.text != "":
+		var score_id = await SilentWolf.Scores.save_score($LineEdit.text, Global.player_score())
+		print("Score saved successfully: " + str(Global.player_score()))
+		SilentWolf.Scores.sw_save_score_complete.connect(_finish_submit_score)
+		
+func _finish_submit_score():
+	populate_leaderboard()
+	SilentWolf.Scores.sw_save_score_complete.disconnect(_finish_submit_score)

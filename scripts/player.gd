@@ -138,6 +138,7 @@ func _kick_ball():
 
 	ball_in_range.linear_velocity = Vector2.ZERO
 	ball_in_range.apply_impulse(Vector2(horizontal_dir * (kick_deviation + 0.5 * kick_deviation * Global.scrolling_speed_multiplier), -kick_force))
+	$AudioStreamPlayer.play(0.25)
 
 
 func _on_game_over():

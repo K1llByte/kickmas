@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://co6ojqjmfsohi"
+path="res://.godot/imported/Merry Kickmas-GameOver.wav-a9102b3beffddbe38502c9d6cbc0ddb9.sample"
+
+[deps]
+
+source_file="res://audio/music/Merry Kickmas-GameOver.wav"
+dest_files=["res://.godot/imported/Merry Kickmas-GameOver.wav-a9102b3beffddbe38502c9d6cbc0ddb9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

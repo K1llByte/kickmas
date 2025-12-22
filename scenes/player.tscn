@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d2bf2belt7sru"]
+[gd_scene load_steps=26 format=3 uid="uid://d2bf2belt7sru"]
 
 [ext_resource type="Script" uid="uid://bj67ke0a5dqls" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://mny5l8e41cga" path="res://images/Idle-0multiplier.png" id="3_dqkch"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bh4f0ablqek8g" path="res://images/Running-0multiplier.png" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://d2imasi20ygd3" path="res://images/Kicking-0multiplier.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://bo4iib1bg1v6d" path="res://images/Jumping-0multiplier.png" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://chana14m3qb7h" path="res://audio/sfx/Merry Kickmas-Kick#A.wav" id="7_fjrip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(17, 35)
@@ -178,3 +179,6 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fjrip")
+volume_db = -20.0
+pitch_scale = 0.6

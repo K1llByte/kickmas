@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chana14m3qb7h"
+path="res://.godot/imported/Merry Kickmas-Kick#A.wav-f48c750a674c9d91182797b5d5c01721.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Merry Kickmas-Kick#A.wav"
+dest_files=["res://.godot/imported/Merry Kickmas-Kick#A.wav-f48c750a674c9d91182797b5d5c01721.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

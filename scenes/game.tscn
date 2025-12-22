@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcfpc82721ceu"]
+[gd_scene load_steps=18 format=3 uid="uid://bcfpc82721ceu"]
 
 [ext_resource type="Script" uid="uid://bchx672pdyuto" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://d2bf2belt7sru" path="res://scenes/player.tscn" id="1_lnu2h"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://by7p70ohxiqu8" path="res://scenes/buildings/building2.tscn" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://cvn1kfs1r63ra" path="res://scripts/controls_labels.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://e66epw3ctndb" path="res://scripts/press_to_start_anim.gd" id="10_vtaks"]
+[ext_resource type="AudioStream" uid="uid://051et8u1n6t4" path="res://audio/music/Merry Kickmas-GameMusic(ver.long).wav" id="11_kvpfn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iywne"]
 font = ExtResource("5_p57ef")
@@ -105,12 +106,6 @@ lifetime = 10.0
 preprocess = 30.0
 process_material = SubResource("ParticleProcessMaterial_vtaks")
 
-[node name="Building1" parent="." instance=ExtResource("6_u5sy4")]
-position = Vector2(827, 560)
-
-[node name="Building2" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(1823, 281)
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -176,3 +171,17 @@ theme_override_font_sizes/font_size = 48
 text = "Press any key to start"
 horizontal_alignment = 1
 script = ExtResource("10_vtaks")
+
+[node name="GameMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_kvpfn")
+volume_db = -30.524
+pitch_scale = 0.74
+autoplay = true
+
+[node name="Grounds" type="Node2D" parent="."]
+
+[node name="Building1" parent="Grounds" instance=ExtResource("6_u5sy4")]
+position = Vector2(827, 560)
+
+[node name="Building2" parent="Grounds" instance=ExtResource("7_u5sy4")]
+position = Vector2(1823, 281)

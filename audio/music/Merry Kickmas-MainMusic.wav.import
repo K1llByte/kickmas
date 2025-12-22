@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://blc4pgy4tkwa4"
+path="res://.godot/imported/Merry Kickmas-MainMusic.wav-3a87a95c97994782f56a55571a7745c1.sample"
+
+[deps]
+
+source_file="res://audio/music/Merry Kickmas-MainMusic.wav"
+dest_files=["res://.godot/imported/Merry Kickmas-MainMusic.wav-3a87a95c97994782f56a55571a7745c1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

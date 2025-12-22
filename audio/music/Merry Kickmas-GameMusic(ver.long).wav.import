@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://051et8u1n6t4"
+path="res://.godot/imported/Merry Kickmas-GameMusic(ver.long).wav-f2cedc8e9971bc4936e5d76090484fc2.sample"
+
+[deps]
+
+source_file="res://audio/music/Merry Kickmas-GameMusic(ver.long).wav"
+dest_files=["res://.godot/imported/Merry Kickmas-GameMusic(ver.long).wav-f2cedc8e9971bc4936e5d76090484fc2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

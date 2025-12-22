@@ -63,7 +63,7 @@ func _spawn_next_ground(ground_data):
 		560 + randf_range(0, 200)
 	)
 
-	add_child(instance)
+	$Grounds.add_child(instance)
 
 	# Store for next spawn
 	previous_ground_width = width
@@ -73,7 +73,7 @@ func _update_ground_spawner():
 		_spawn_next_ground(ground_types.pick_random())
 
 func _cleanup_old_ground():
-	for child in get_children():
+	for child in $Grounds.get_children():
 		if child.global_position.x > camera.global_position.x + 6200:
 			child.queue_free()
 

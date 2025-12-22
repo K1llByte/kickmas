@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://um3xud3pwpeh"
+path="res://.godot/imported/Merry Kickmas-ElectricUI.wav-d99bc61090f0781771e26d9471f783a1.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Merry Kickmas-ElectricUI.wav"
+dest_files=["res://.godot/imported/Merry Kickmas-ElectricUI.wav-d99bc61090f0781771e26d9471f783a1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

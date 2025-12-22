@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcfpc82721ceu"]
+[gd_scene load_steps=20 format=3 uid="uid://bcfpc82721ceu"]
 
 [ext_resource type="Script" uid="uid://bchx672pdyuto" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://d2bf2belt7sru" path="res://scenes/player.tscn" id="1_lnu2h"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cvn1kfs1r63ra" path="res://scripts/controls_labels.gd" id="9_0tnpc"]
 [ext_resource type="AudioStream" uid="uid://1vh1daud6fgb" path="res://audio/music/Merry Kickmas-GameMusic(ver.long).mp3" id="9_kvpfn"]
 [ext_resource type="Script" uid="uid://e66epw3ctndb" path="res://scripts/press_to_start_anim.gd" id="10_vtaks"]
+[ext_resource type="Texture2D" uid="uid://devjq8n7rlfii" path="res://images/Wood sign.png" id="12_dinhu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iywne"]
 font = ExtResource("5_p57ef")
@@ -56,7 +57,7 @@ script = ExtResource("1_iywne")
 ball_outline_color = Color(0.8330994, 0.90358806, 0.17725885, 0.93333334)
 
 [node name="CloudParallax" type="Parallax2D" parent="."]
-z_index = -1
+z_index = -2
 scroll_scale = Vector2(0.3, 1)
 scroll_offset = Vector2(0, 1)
 repeat_size = Vector2(2560, 0)
@@ -127,6 +128,24 @@ scale_amount_max = 6.0
 color_initial_ramp = SubResource("Gradient_kvpfn")
 anim_speed_max = 0.02
 
+[node name="JumpLabel2" type="Label" parent="."]
+z_index = -1
+offset_left = 549.0
+offset_top = 390.0
+offset_right = 616.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(0.6903316, 0.33399716, 0.17979437, 1)
+theme_override_fonts/font = ExtResource("5_p57ef")
+theme_override_font_sizes/font_size = 32
+text = "Jump"
+horizontal_alignment = 1
+
+[node name="WoodSign" type="Sprite2D" parent="JumpLabel2"]
+z_index = -1
+position = Vector2(34, 36)
+scale = Vector2(3, 3)
+texture = ExtResource("12_dinhu")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -183,9 +202,9 @@ horizontal_alignment = 1
 z_index = -1
 layout_mode = 0
 offset_left = 566.0
-offset_top = 328.0
-offset_right = 1019.0
-offset_bottom = 532.0
+offset_top = 297.0
+offset_right = 1022.0
+offset_bottom = 501.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.49411765)
 theme_override_fonts/font = ExtResource("5_p57ef")
 theme_override_font_sizes/font_size = 48

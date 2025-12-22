@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsa85fsne282i"]
+[gd_scene load_steps=10 format=3 uid="uid://dsa85fsne282i"]
 
-[ext_resource type="Texture2D" uid="uid://e5udhuyqd5k" path="res://images/Title Screen.png" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://mdjsef8450dj" path="res://images/TitleScreenFinal.png" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://b2k3eufh07hyh" path="res://images/Icons-0multiplier.png" id="1_l6cm7"]
+[ext_resource type="Shader" uid="uid://cx1eux1l12ngs" path="res://shaders/wavy_font.gdshader" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://bbwh3y5a2p1fc" path="res://images/Logo.png" id="3_wu84c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ekxnf"]
 atlas = ExtResource("1_l6cm7")
@@ -19,6 +21,12 @@ region = Rect2(32, 32, 32, 32)
 atlas = ExtResource("1_l6cm7")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtw2f"]
+shader = ExtResource("3_8ln24")
+shader_parameter/wave_strength = 2.0
+shader_parameter/wave_speed = 1.5
+shader_parameter/wave_frequency = 6.0
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -29,10 +37,11 @@ grow_vertical = 2
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 0
+offset_top = -131.0
 offset_right = 320.0
-offset_bottom = 180.0
+offset_bottom = 119.0
 scale = Vector2(5, 5)
-texture = ExtResource("1_ekxnf")
+texture = ExtResource("1_bqqt6")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -58,3 +67,12 @@ texture_pressed = SubResource("AtlasTexture_8ln24")
 visible = false
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_bqqt6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_rtw2f")
+layout_mode = 0
+offset_left = 479.0
+offset_top = 16.0
+offset_right = 1375.0768
+offset_bottom = 369.0
+texture = ExtResource("3_wu84c")

@@ -53,6 +53,7 @@ colors = PackedColorArray(1, 1, 1, 0.34509805, 1, 1, 1, 1)
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_iywne")
+ball_outline_color = Color(0.8330994, 0.90358806, 0.17725885, 0.93333334)
 
 [node name="CloudParallax" type="Parallax2D" parent="."]
 z_index = -1

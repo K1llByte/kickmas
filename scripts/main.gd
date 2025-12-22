@@ -33,6 +33,11 @@ func _on_mute_audio():
 	AudioServer.set_bus_mute(master_bus, !muted)
 
 
+func _input(event: InputEvent):
+	if $CanvasLayer.get_child_count() > 0 and event.is_action_pressed("menu_play"):
+		_on_retry()
+
+
 func _on_game_over():
 	$CanvasLayer.add_child(leaderboard_scene.instantiate())
 	var gameover = gameover_scene.instantiate()

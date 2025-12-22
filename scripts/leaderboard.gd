@@ -26,7 +26,7 @@ func _add_scoreline(pos, name, score):
 	var scoreline_name = scoreline_scene.instantiate()
 	var scoreline_score = scoreline_scene.instantiate()
 	scoreline_pos.text = '#' + str(pos) + " "
-	scoreline_name.text = name + " "
+	scoreline_name.text = pad_string_to_length(name, 16) + " "
 	scoreline_score.text = str(int(score))
 	$GridContainer.add_child(scoreline_pos)
 	$GridContainer.add_child(scoreline_name)
@@ -80,3 +80,9 @@ func _reset_leaderboard():
 # have whitespaces.
 func _is_valid_name(name: String) -> bool:
 	return name.length() <= 16 and not name.contains(" ")
+	
+func pad_string_to_length(text: String, target_length: int) -> String:
+	if text.length() >= target_length:
+		return text
+	var spaces_to_add := target_length - text.length()
+	return text + " ".repeat(spaces_to_add)

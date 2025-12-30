@@ -1,4 +1,4 @@
-name: Build Godot Release
+name: Build Web Release
 
 on:
   workflow_dispatch:
@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Install dependencies
         run: |
@@ -39,41 +37,18 @@ jobs:
       - name: Create build directories
         run: |
           mkdir -p build/web
-          mkdir -p build/windows
 
       - name: Export Web build
         run: |
           ./godot --headless --export-release "KickmasWeb" build/web/index.html
-
-      - name: Export Windows build
-        run: |
-          ./godot --headless --export-release "KickmasWindows" build/windows/Kickmas.exe
 
       - name: Prepare release contents
         run: |
           mkdir -p /tmp/release
           cp -r build /tmp/release/
 
-      - name: Create clean release branch
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-
-          # Create orphan branch
-          git checkout --orphan release
-
-          # Remove everything
-          git rm -rf .
-
-          # Restore only build folder
-          cp -r /tmp/release/build ./build
-
-          git add build/
-          git commit -m "Automated Godot release build"
-
-      - name: Push release branch
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          # Push using the built-in GitHub token
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} release --force
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
+          single-commit: true

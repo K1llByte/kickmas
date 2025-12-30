@@ -1,7 +1,8 @@
 extends Node2D
 
 @export var spawn_buffer := 800.0 # how far offscreen to spawn
-@export var ball_outline_color := Color(0.42, 0.611, 0.0, 0.761)
+@export var kickable_ball_color := Color(0.42, 0.611, 0.0, 0.761)
+@export var ball_in_range_color := Color(0.904, 0.108, 0.0, 0.761)
 
 @onready var camera: Camera2D
 @onready var ball_scene = preload("res://scenes/ball.tscn")
@@ -84,8 +85,10 @@ func _update_ball_outline():
 	if $Ball != null:
 		# Change ball color acording to distance to player
 		if $Player.ball_in_range != null:
-			$Ball.set_outline_color(ball_outline_color)
-		#elif $Player.global_position.distance_to($Ball.global_position) < 200.0:
-			#$Ball.set_outline_color(Color(1.0, 0.019, 0.251, 0.761))
+			if $Ball.linear_velocity.y > 0:
+				$Ball.set_outline_color(kickable_ball_color)
+			else:
+				$Ball.set_outline_color(ball_in_range_color)
 		else:
+			# Invisible outline
 			$Ball.set_outline_color(Color(0.0, 0.0, 0.0, 0.0))

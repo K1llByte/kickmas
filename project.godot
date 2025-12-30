@@ -11,10 +11,13 @@ config_version=5
 [application]
 
 config/name="Kickmas"
+config/version="v1.0.0"
 run/main_scene="uid://cnfvism23gmw8"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=60
-config/icon="res://images/icon.svg"
+boot_splash/bg_color=Color(0.21568628, 0.18431373, 0.36078432, 1)
+boot_splash/image="uid://dxlokhqdr53ia"
+config/icon="uid://dsur5ppatmlta"
 
 [autoload]
 

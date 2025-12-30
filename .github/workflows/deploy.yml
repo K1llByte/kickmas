@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  
 
     steps:
       - name: Checkout repository
@@ -31,9 +31,8 @@ jobs:
       - name: Install export templates
         run: |
           wget https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_export_templates.tpz
-          mkdir -p ~/.local/share/godot/export_templates/4.5.1.stable
-          unzip Godot_v4.5.1-stable_export_templates.tpz \
-            -d ~/.local/share/godot/export_templates/4.5.1.stable
+          mkdir -p ~/.local/share/godot/export_templates
+          unzip Godot_v4.5.1-stable_export_templates.tpz -d ~/.local/share/godot/export_templates
 
       - name: Create build directories
         run: |
